@@ -179,7 +179,7 @@ ansible all -m ping
 ansible web -m setup -a 'filter=ansible_distribution*'
 
 # Run a read-only command
-ansible web -m command -a 'uptime'
+sudo ansible all -m command -a 'uptime'
 
 # Install nginx on Debian or Ubuntu hosts
 ansible web -b -m ansible.builtin.apt -a 'name=nginx state=present update_cache=true'
