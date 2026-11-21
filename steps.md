@@ -1,3 +1,97 @@
+# 21-11-2026 
+```
+// Ansible - Configuration Management 
+
+repetitions - unique 
+automation 
+remote connect
+
+RHEL 
+
+app >> OS 
+
+vpc 
+
+ansible server - host1, host2... 50
+
+
+50vms >> apache
+
+
+
+// Ansible setup 
+
+2 hosts
+1 server
+
+Amazon Linux - ansible.pem | 60GB SSD | t3.medium / c7.iflex.large
+
+server >>
+
+sudo yum update -y 
+sudo yum install python python3-pip tree -y 
+sudo yum search ansible 
+sudo yum install ansible.noarch -y 
+ansible --version 
+
+cd /etc/ansible 
+
+sudo mkdir inventory
+cd inventory 
+sudo touch hosts 
+sudo nano hosts 
+
+// 
+[all]
+host1-public-ip
+host2-public-ip
+
+cd ..
+sudo mkdir playbooks
+cd playbooks
+sudo touch ping.yml
+cd ..
+
+sudo touch ansible.cfg 
+sudo nano ansible.cfg 
+
+[defaults]
+inventory = ./inventory/hosts
+remote_user = ec2-user
+private_key_file = ./aws/ansible.pem
+host_key_checking = False
+retry_files_enabled = False
+interpreter_python = auto_silent
+
+[privilege_escalation]
+become = True
+become_method = sudo
+become_user = root
+become_ask_pass = False
+
+sudo mkdir aws 
+cd aws
+sudo touch ansible.pem 
+sudo nano ansible.pem
+
+// paste ansible.pem code 
+
+tree
+
+├── ansible.cfg
+├── aws
+│   └── ansible.pem
+├── inventory
+│   └── hosts
+├── playbooks
+│   └── ping.yml
+└── roles
+
+sudo chmod 400 aws/ansible.pem
+
+sudo ansible -m ping all 
+```
+
 ```
 // ec2 - ansible
 
