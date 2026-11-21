@@ -1,4 +1,4 @@
-# Ansible Configuration Management Training Guide
+# Ansible - Configuration Management
 
 ## Purpose and learning outcomes
 
